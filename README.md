@@ -11,7 +11,7 @@
 * 累積調閱筆數
 * 資料更新時間
 
-資料範圍：自 2021/11/18 開始蒐集資料 [^start-date]，至 2022/5/27 資料不再更新[^cease-update]為止。
+資料範圍：自 2021/11/18 開始蒐集資料[^start-date]，至 2022/5/27 資料不再更新[^cease-update]為止。
 
 [^start-date]: 2021/11/18 是研究者開始蒐集資料的日期，該網頁何時開始提供統計數字目前尚無公開資訊。
 [^cease-update]: 簡訊實聯制於 2022/4/27 停止使用，最後一日的資料理應於 2022/5/27 屆滿 28 天而刪除。
@@ -31,3 +31,12 @@ curl "https://sms.1922.gov.tw/map/user/people/clear_count"
 ```json
 {"Result":1,"Data":{"alldaycnt":7701371,"allsumcnt":4786676508,"allqryrowcnt":42845907,"yyyymmdd":"20220526","updatetime":"2022-05-27T09:59:15.503"},"Message":"成功"}
 ```
+
+## `ncc_sent.csv`、`ncc_deleted.csv`
+
+國家通訊傳播委員會 (NCC) 於 2021/6/28 起每週陸續公布在其[臉書粉絲專頁](https://www.facebook.com/ncc.gov.tw/photos/)的簡訊實聯制統計數字，包含：
+
+* 發送（刪除）統計期間末日
+* 累積發送（刪除）簡訊則數
+
+統計期間始日均為 2021/5/19。
