@@ -2,6 +2,21 @@
 
 中央研究院法律學研究所資訊法中心[〈簡訊實聯制觀察筆記〉](https://infolaw.iias.sinica.edu.tw/?tag=%e7%b0%a1%e8%a8%8a%e5%af%a6%e8%81%af%e5%88%b6)系列文章原始研究資料。
 
+## `ncc_sent.csv`、`ncc_deleted.csv`
+
+國家通訊傳播委員會 (NCC) 於 2021/6/28 起陸續以字卡形式公布[^frequency-NCC]在其[臉書粉絲專頁](https://www.facebook.com/ncc.gov.tw/photos/)的簡訊實聯制統計數字。此處僅將粉絲專頁字卡之統計數字整理成易於處理的開放格式，兩檔案分別包含：
+
+* 發送（刪除）統計期間末日
+* 累積發送（刪除）簡訊則數
+
+[^frequency-NCC]: NCC 原則上每週發布一次統計，但偶有缺漏情形。
+
+**資料範圍：** 自 2021/6/28 首次發布統計，至 2022/5/27 最後一次發布統計為止。
+
+統計期間始日均為 2021/5/19。
+
+**參考閱讀：**[簡訊實聯制觀察筆記（一）：法規背景與使用趨勢](https://infolaw.iias.sinica.edu.tw/?p=4981)。
+
 ## `1922.csv`
 
 衛福部疾管署「[簡訊實聯制 – 民眾資料調閱紀錄查詢服務](https://sms.1922.gov.tw)」網頁下方橫幅的統計數字[^frequency-1922]歷史紀錄：
@@ -13,7 +28,7 @@
 * 累積調閱筆數
 * 資料更新時間
 
-**資料範圍：**​自 2021/11/18 開始蒐集資料[^start-date]，至 2022/5/27 資料不再更新[^cease-update]為止。
+**資料範圍：** 自 2021/11/18 開始蒐集資料[^start-date]，至 2022/5/27 資料不再更新[^cease-update]為止。
 
 [^start-date]: 2021/11/18 是研究者開始蒐集資料的日期，該網頁何時開始提供統計數字目前尚無公開資訊。
 [^cease-update]: 簡訊實聯制於 2022/4/27 停止使用，最後一日的資料理應於 2022/5/27 屆滿 28 天而刪除。
@@ -28,7 +43,11 @@
 
 ## `script.gs`
 
-用以自動化抓取資料的 Google App Script 程式原始碼。
+用以自動化抓取 1922 疫調平台統計資料的 Google App Script 程式原始碼。
+
+**使用方式：** 填入 `SPREADSHEET_ID` 後設定「觸發條件」→「`run`」、「時間驅動」、「小時計時器」以及適當的時間間隔 → 儲存並授權執行。
+
+#### 原始資料來源範例
 
 ```sh
 curl "https://sms.1922.gov.tw/map/user/people/clear_count"
@@ -37,18 +56,3 @@ curl "https://sms.1922.gov.tw/map/user/people/clear_count"
 ```json
 {"Result":1,"Data":{"alldaycnt":7701371,"allsumcnt":4786676508,"allqryrowcnt":42845907,"yyyymmdd":"20220526","updatetime":"2022-05-27T09:59:15.503"},"Message":"成功"}
 ```
-
-## `ncc_sent.csv`、`ncc_deleted.csv`
-
-國家通訊傳播委員會 (NCC) 於 2021/6/28 起陸續以字卡形式公布[^frequency-NCC]在其[臉書粉絲專頁](https://www.facebook.com/ncc.gov.tw/photos/)的簡訊實聯制統計數字。此處僅將粉絲專頁字卡之統計數字整理成易於處理的開放格式，兩檔案分別包含：
-
-* 發送（刪除）統計期間末日
-* 累積發送（刪除）簡訊則數
-
-[^frequency-NCC]: NCC 原則上每週發布一次統計，但偶有缺漏情形。
-
-**資料範圍：**​自 2021/6/28 首次發布統計，至 2022/5/27 最後一次發布統計為止。
-
-統計期間始日均為 2021/5/19。
-
-**參考閱讀：**[簡訊實聯制觀察筆記（一）：法規背景與使用趨勢](https://infolaw.iias.sinica.edu.tw/?p=4981)。
